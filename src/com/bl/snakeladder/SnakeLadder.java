@@ -2,30 +2,34 @@ package com.bl.snakeladder;
 
 public class SnakeLadder {
 	public static void main(String[] args) {
-		int dice = (int) Math.floor(Math.random() * 6 + 1);
-		System.out.println("The number on dice is " + dice);
+		System.out.println("Starting of Snake and Ladder Game");
 
-		int option = (int) Math.floor(Math.random() * 3);
-		int noPlay = 0;
+		// int noPlay = 0;
 		int ladder = 1;
 		int snake = 2;
 		int urPresentStep = 0;
 
-		System.out.println("Present You are on Step:" + urPresentStep);
-		System.out.println("If you get option as 0 it is noPlay, 1 it is ladder, 2 it is snake ");
-		System.out.println("You got option :" + option);
+		System.out.println("Starting the Game and You Are On step :" + urPresentStep);
+		while (urPresentStep < 100) {
+			int dice = (int) Math.floor(Math.random() * 6 + 1);
+			System.out.println("The number on dice is : " + dice);
+			int option = (int) Math.floor(Math.random() * 3);
+			System.out.println("If you get option as 0 it is noplay, 1 it is ladder, 2 it is snake ");
+			System.out.println("You got option :" + option);
+			if (option == ladder) {
+				urPresentStep += dice;
+				if (urPresentStep > 100)
+					urPresentStep = option;
+				System.out.println("You are on step move forward:" + urPresentStep);
+			} else if (option == snake) {
+				urPresentStep -= dice;
+				if (urPresentStep < 0)
+					urPresentStep = 0;
+				System.out.println("You are on step move backward : " + urPresentStep);
 
-		if (option == ladder) {
-			urPresentStep += dice;
-			System.out.println("You are on :" + urPresentStep);
-		} else if (option == snake) {
-			snake--;
-			if (snake < 0) {
-				snake = 0;
+			} else {
+				System.out.println("You are on step :" + urPresentStep);
 			}
-			System.out.println("You are on : " + urPresentStep);
-		} else {
-			System.out.println("You are on :" + urPresentStep);
 		}
 	}
 }
